@@ -74,6 +74,8 @@ func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (se
 		http.SetCookie(w, &cookie)
 		return
 	}
+	cookie.MaxAge = int(manager.maxlifetime)
+	http.SetCookie(w, cookie)
 	sid, _ := url.QueryUnescape(cookie.Value)
 	session, _ = manager.provider.SessionRead(sid)
 	return

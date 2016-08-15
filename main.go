@@ -13,7 +13,7 @@ import (
 var globalSessions *sessions.Manager
 
 func init() {
-	globalSessions, _ = sessions.NewManager("memory", "gosessionid", 3600)
+	globalSessions, _ = sessions.NewManager("memory", "gosessionid", 60)
 	go globalSessions.GC()
 }
 
